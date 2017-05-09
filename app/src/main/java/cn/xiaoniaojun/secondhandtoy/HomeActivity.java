@@ -1,4 +1,4 @@
-package com.github.ypicoleal.logindemo;
+package cn.xiaoniaojun.secondhandtoy;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -10,16 +10,15 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.github.ypicoleal.logindemo.widgets.RowActionEnum;
-import com.github.ypicoleal.logindemo.widgets.view_factories.row_view.OnRowClickListener;
-import com.github.ypicoleal.logindemo.widgets.view_factories.row_view.RowView;
-import com.github.ypicoleal.logindemo.widgets.view_factories.row_view.RowViewFactory;
-import com.github.ypicoleal.logindemo.widgets.view_factories.row_view.RowViewParams;
 
 import android.os.Handler;
 
 import cn.xiaoniaojun.bottomnavigationbar.BottomBarTab;
 import cn.xiaoniaojun.bottomnavigationbar.BottomNavigationBar;
+import cn.xiaoniaojun.secondhandtoy.widgets.view_factories.row_view.OnRowClickListener;
+import cn.xiaoniaojun.secondhandtoy.widgets.view_factories.row_view.RowView;
+import cn.xiaoniaojun.secondhandtoy.widgets.view_factories.row_view.RowViewFactory;
+import cn.xiaoniaojun.secondhandtoy.widgets.view_factories.row_view.RowViewParams;
 
 
 /**

@@ -1,4 +1,4 @@
-package com.github.ypicoleal.logindemo;
+package cn.xiaoniaojun.secondhandtoy;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.github.ypicoleal.logindemo", appContext.getPackageName());
+        assertEquals("cn.xiaoniaojun.secondhandtoy", appContext.getPackageName());
     }
 }

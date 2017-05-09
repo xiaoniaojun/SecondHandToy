@@ -1,6 +1,4 @@
-package com.github.ypicoleal.logindemo.widgets.view_factories.row_view;
-
-import com.github.ypicoleal.logindemo.widgets.RowActionEnum;
+package cn.xiaoniaojun.secondhandtoy.widgets.view_factories.row_view;
 
 /**
  * Package: com.github.ypicoleal.logindemo.widgets.view_factories.row_view

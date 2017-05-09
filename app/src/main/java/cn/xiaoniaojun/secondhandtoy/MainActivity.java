@@ -1,4 +1,4 @@
-package com.github.ypicoleal.logindemo;
+package cn.xiaoniaojun.secondhandtoy;
 
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
@@ -11,7 +11,6 @@ import android.os.Handler;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,8 +24,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import cn.xiaoniaojun.secondhandtoy.HomeActivity;
+import cn.xiaoniaojun.secondhandtoy.R;
 import it.sephiroth.android.library.easing.Back;
 import it.sephiroth.android.library.easing.EasingManager;
 

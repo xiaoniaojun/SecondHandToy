@@ -1,9 +1,7 @@
-package com.github.ypicoleal.logindemo.widgets.view_factories;
+package cn.xiaoniaojun.secondhandtoy.widgets.view_factories;
 
 import android.content.Context;
 import android.view.View;
-
-import com.github.ypicoleal.logindemo.widgets.view_factories.row_view.OnRowClickListener;
 
 /**
  * Package: com.github.ypicoleal.logindemo.widgets.view_factories

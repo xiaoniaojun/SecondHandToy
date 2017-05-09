@@ -1,14 +1,16 @@
-package com.github.ypicoleal.logindemo.widgets;
+package cn.xiaoniaojun.secondhandtoy.widgets;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
-import com.github.ypicoleal.logindemo.widgets.view_factories.row_view.RowView;
+
 
 import java.util.ArrayList;
 import java.util.List;
+
+import cn.xiaoniaojun.secondhandtoy.widgets.view_factories.row_view.RowView;
 
 /**
  * Package: com.github.ypicoleal.logindemo.widgets

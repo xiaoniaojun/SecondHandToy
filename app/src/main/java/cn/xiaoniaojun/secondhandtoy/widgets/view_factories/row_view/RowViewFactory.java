@@ -1,10 +1,11 @@
-package com.github.ypicoleal.logindemo.widgets.view_factories.row_view;
+package cn.xiaoniaojun.secondhandtoy.widgets.view_factories.row_view;
 
 import android.content.Context;
 
-import com.github.ypicoleal.logindemo.widgets.*;
-import com.github.ypicoleal.logindemo.widgets.view_factories.BaseViewFactory;
-import com.github.ypicoleal.logindemo.widgets.view_factories.BaseViewParams;
+
+
+import cn.xiaoniaojun.secondhandtoy.widgets.view_factories.BaseViewFactory;
+import cn.xiaoniaojun.secondhandtoy.widgets.view_factories.BaseViewParams;
 
 /**
  * Package: com.github.ypicoleal.logindemo.widgets.view_factories.row_view

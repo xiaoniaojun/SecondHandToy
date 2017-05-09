@@ -1,7 +1,6 @@
-package com.github.ypicoleal.logindemo.widgets.view_factories.row_view;
+package cn.xiaoniaojun.secondhandtoy.widgets.view_factories.row_view;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -11,10 +10,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.github.ypicoleal.logindemo.R;
-import com.github.ypicoleal.logindemo.widgets.*;
+import cn.xiaoniaojun.secondhandtoy.R;
+
 
 /**
+ * Package: ${PACKAGE_NAME}
  * Created by hackpoint on 2017/5/6.
  */
 

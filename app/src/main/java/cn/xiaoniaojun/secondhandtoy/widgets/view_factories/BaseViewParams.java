@@ -1,4 +1,4 @@
-package com.github.ypicoleal.logindemo.widgets.view_factories;
+package cn.xiaoniaojun.secondhandtoy.widgets.view_factories;
 
 import android.os.Bundle;
 

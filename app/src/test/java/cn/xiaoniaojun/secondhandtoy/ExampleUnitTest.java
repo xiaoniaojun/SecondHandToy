@@ -1,4 +1,4 @@
-package com.github.ypicoleal.logindemo;
+package cn.xiaoniaojun.secondhandtoy;
 
 import org.junit.Test;
 
