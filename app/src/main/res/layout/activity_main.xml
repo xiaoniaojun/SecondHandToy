@@ -9,7 +9,7 @@
     android:clipChildren="false"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.github.ypicoleal.logindemo.MainActivity">
+    tools:context="com.github.ypicoleal.secondhandtoy.MainActivity">
 
     <View
         android:id="@+id/view"
