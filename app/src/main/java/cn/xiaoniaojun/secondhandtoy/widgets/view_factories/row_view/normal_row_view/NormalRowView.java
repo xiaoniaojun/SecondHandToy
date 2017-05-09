@@ -1,4 +1,4 @@
-package cn.xiaoniaojun.secondhandtoy.widgets.view_factories.row_view;
+package cn.xiaoniaojun.secondhandtoy.widgets.view_factories.row_view.normal_row_view;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import cn.xiaoniaojun.secondhandtoy.R;
+import cn.xiaoniaojun.secondhandtoy.widgets.view_factories.row_view.OnRowClickListener;
 
 
 /**
@@ -18,7 +19,7 @@ import cn.xiaoniaojun.secondhandtoy.R;
  * Created by hackpoint on 2017/5/6.
  */
 
-public class RowView extends LinearLayout implements View.OnClickListener {
+public class NormalRowView extends LinearLayout implements View.OnClickListener {
 
 
     private final OnRowClickListener mOnRowClickListener;
@@ -29,15 +30,15 @@ public class RowView extends LinearLayout implements View.OnClickListener {
 
 
 
-    public RowView(Context context) {
+    public NormalRowView(Context context) {
         this(context,null);
     }
 
-    public RowView(Context context, @Nullable AttributeSet attrs) {
+    public NormalRowView(Context context, @Nullable AttributeSet attrs) {
         this(context,attrs,0);
     }
 
-    public RowView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public NormalRowView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initFindingViews();
         if (context instanceof OnRowClickListener) {
@@ -63,7 +64,7 @@ public class RowView extends LinearLayout implements View.OnClickListener {
         tvRowContent.setText(content);
 
         mAction = action;
-        if (mAction != RowViewParams.ROW_ACTION_NO_ACTION && mOnRowClickListener  != null ) {
+        if (mAction != NormalRowViewParams.ROW_ACTION_NO_ACTION && mOnRowClickListener  != null ) {
             setOnClickListener(this);
             setBackgroundResource(R.drawable.widget_row_selector);
         } else {

@@ -1,4 +1,4 @@
-package cn.xiaoniaojun.secondhandtoy.widgets.view_factories.row_view;
+package cn.xiaoniaojun.secondhandtoy.widgets.view_factories.row_view.normal_row_view;
 
 import android.content.Context;
 
@@ -8,25 +8,24 @@ import cn.xiaoniaojun.secondhandtoy.widgets.view_factories.BaseViewFactory;
 import cn.xiaoniaojun.secondhandtoy.widgets.view_factories.BaseViewParams;
 
 /**
- * Package: com.github.ypicoleal.logindemo.widgets.view_factories.row_view
  * Created by hackpoint on 2017/5/9.
  */
 
-public class RowViewFactory extends BaseViewFactory<RowView> {
+public class NormalRowViewFactory extends BaseViewFactory<NormalRowView> {
 
 
-    public RowViewFactory(Context context) {
+    public NormalRowViewFactory(Context context) {
         super(context);
     }
 
     @Override
-    public RowView createView(BaseViewParams params) {
+    public NormalRowView createView(BaseViewParams params) {
         String content = params.getProperty("content");
         int icon = params.getProperty("icon");
         int action = params.getProperty("action");
 
-        RowView rowView = new RowView(mContext);
-        rowView.config(icon,content,action);
-        return rowView;
+        NormalRowView normalRowView = new NormalRowView(mContext);
+        normalRowView.config(icon,content,action);
+        return normalRowView;
     }
 }

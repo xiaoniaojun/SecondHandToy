@@ -16,9 +16,9 @@ import android.os.Handler;
 import cn.xiaoniaojun.bottomnavigationbar.BottomBarTab;
 import cn.xiaoniaojun.bottomnavigationbar.BottomNavigationBar;
 import cn.xiaoniaojun.secondhandtoy.widgets.view_factories.row_view.OnRowClickListener;
-import cn.xiaoniaojun.secondhandtoy.widgets.view_factories.row_view.RowView;
-import cn.xiaoniaojun.secondhandtoy.widgets.view_factories.row_view.RowViewFactory;
-import cn.xiaoniaojun.secondhandtoy.widgets.view_factories.row_view.RowViewParams;
+import cn.xiaoniaojun.secondhandtoy.widgets.view_factories.row_view.normal_row_view.NormalRowView;
+import cn.xiaoniaojun.secondhandtoy.widgets.view_factories.row_view.normal_row_view.NormalRowViewFactory;
+import cn.xiaoniaojun.secondhandtoy.widgets.view_factories.row_view.normal_row_view.NormalRowViewParams;
 
 
 /**
@@ -30,8 +30,8 @@ public class HomeActivity extends AppCompatActivity implements OnRowClickListene
 
     public static final int ROW_ACTION_FIRST = 1;
 
-    private RowView mRowFirst;
-    private RowView mRowSecond;
+    private NormalRowView mRowFirst;
+    private NormalRowView mRowSecond;
 
     private BottomNavigationBar mBottomNavigationBar;
     private LinearLayout mHomeLayoutContainer;
@@ -57,14 +57,14 @@ public class HomeActivity extends AppCompatActivity implements OnRowClickListene
     private void findViews() {
         mBottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
         mHomeLayoutContainer = (LinearLayout) findViewById(R.id.home_layout_container);
-        RowViewFactory rowViewFactory = new RowViewFactory(this);
-        RowView firstRowView = rowViewFactory.createView(
-                RowViewParams.build()
+        NormalRowViewFactory normalRowViewFactory = new NormalRowViewFactory(this);
+        NormalRowView firstNormalRowView = normalRowViewFactory.createView(
+                NormalRowViewParams.build()
                         .setIconAndContent(R.drawable.ic_qq_blue, "MY POSTS").
                         setOnRowAction(ROW_ACTION_FIRST)
                         .done()
         );
-        mHomeLayoutContainer.addView(firstRowView,0);
+        mHomeLayoutContainer.addView(firstNormalRowView,0);
         
     }
 

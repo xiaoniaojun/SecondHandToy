@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.xiaoniaojun.secondhandtoy.widgets.view_factories.row_view.RowView;
+import cn.xiaoniaojun.secondhandtoy.widgets.view_factories.row_view.normal_row_view.NormalRowView;
 
 /**
  * Package: com.github.ypicoleal.logindemo.widgets
@@ -19,7 +19,7 @@ import cn.xiaoniaojun.secondhandtoy.widgets.view_factories.row_view.RowView;
 
 public class GroupView extends LinearLayout{
 
-    private List<RowView> mRowViewList = new ArrayList<>();
+    private List<NormalRowView> mNormalRowViewList = new ArrayList<>();
 
     public GroupView(Context context) {
         this(context,null,0);
