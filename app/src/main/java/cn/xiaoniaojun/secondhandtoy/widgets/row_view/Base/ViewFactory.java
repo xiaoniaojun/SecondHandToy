@@ -1,4 +1,4 @@
-package cn.xiaoniaojun.secondhandtoy.widgets.view_factories;
+package cn.xiaoniaojun.secondhandtoy.widgets.row_view.Base;
 
 import android.view.View;
 
@@ -8,5 +8,5 @@ import android.view.View;
  */
 
 public interface ViewFactory <V extends View>{
-    public abstract V createView(BaseViewParams params);
+    public abstract V createView(BaseViewDescriptor params);
 }

@@ -1,22 +1,22 @@
-package cn.xiaoniaojun.secondhandtoy.widgets.view_factories.row_view.normal_row_view;
+package cn.xiaoniaojun.secondhandtoy.widgets.row_view.normal_row_view;
 
 import android.os.Bundle;
 
-import cn.xiaoniaojun.secondhandtoy.widgets.view_factories.BaseViewParams;
+import cn.xiaoniaojun.secondhandtoy.widgets.row_view.Base.BaseViewDescriptor;
 
 
 /**
- * Package: cn.xiaoniaojun.secondhandtoy.widgets.view_factories.BaseViewParams
+ * Package: cn.xiaoniaojun.secondhandtoy.widgets.row_view.Base.BaseViewDescriptor
  * Created by hackpoint on 2017/5/9.
  */
 
-public class NormalRowViewParams extends BaseViewParams {
+public class NormalRowViewDescriptor extends BaseViewDescriptor {
 
     // RowClick事件枚举值(替代Enum类)
     public static final int ROW_ACTION_NO_ACTION = 0;
 
 
-    private NormalRowViewParams(int viewType) {
+    private NormalRowViewDescriptor(int viewType) {
         super(viewType);
     }
 
@@ -44,8 +44,8 @@ public class NormalRowViewParams extends BaseViewParams {
             return this;
         }
 
-        public NormalRowViewParams done() {
-            NormalRowViewParams params = new NormalRowViewParams(BaseViewParams.VIEW_TYPE_NORMAL_ROW);
+        public NormalRowViewDescriptor done() {
+            NormalRowViewDescriptor params = new NormalRowViewDescriptor(BaseViewDescriptor.VIEW_TYPE_NORMAL_ROW);
             Bundle bundle = new Bundle();
             if (content == null && icon == 0) {
                 try {

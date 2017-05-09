@@ -1,4 +1,4 @@
-package cn.xiaoniaojun.secondhandtoy.widgets.view_factories;
+package cn.xiaoniaojun.secondhandtoy.widgets.row_view.Base;
 
 import android.os.Bundle;
 
@@ -7,7 +7,7 @@ import android.os.Bundle;
  * Created by hackpoint on 2017/5/9.
  */
 
-public class BaseViewParams {
+public class BaseViewDescriptor {
 
     // 每增加一种RowView，都需要在这里为该类型添加一个索引号
     public static final int VIEW_TYPE_NORMAL_ROW = 0;
@@ -16,7 +16,7 @@ public class BaseViewParams {
     private int viewType;
     private Bundle mParams;
 
-    public BaseViewParams(int viewType) {
+    public BaseViewDescriptor(int viewType) {
         this.viewType = viewType;
     }
 

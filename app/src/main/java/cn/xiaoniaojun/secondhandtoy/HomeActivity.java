@@ -15,10 +15,10 @@ import android.os.Handler;
 
 import cn.xiaoniaojun.bottomnavigationbar.BottomBarTab;
 import cn.xiaoniaojun.bottomnavigationbar.BottomNavigationBar;
-import cn.xiaoniaojun.secondhandtoy.widgets.view_factories.row_view.OnRowClickListener;
-import cn.xiaoniaojun.secondhandtoy.widgets.view_factories.row_view.normal_row_view.NormalRowView;
-import cn.xiaoniaojun.secondhandtoy.widgets.view_factories.row_view.normal_row_view.NormalRowViewFactory;
-import cn.xiaoniaojun.secondhandtoy.widgets.view_factories.row_view.normal_row_view.NormalRowViewParams;
+import cn.xiaoniaojun.secondhandtoy.widgets.group_view.GroupView;
+import cn.xiaoniaojun.secondhandtoy.widgets.row_view.OnRowClickListener;
+import cn.xiaoniaojun.secondhandtoy.widgets.row_view.normal_row_view.NormalRowView;
+import cn.xiaoniaojun.secondhandtoy.widgets.row_view.normal_row_view.NormalRowViewDescriptor;
 
 
 /**
@@ -29,6 +29,7 @@ import cn.xiaoniaojun.secondhandtoy.widgets.view_factories.row_view.normal_row_v
 public class HomeActivity extends AppCompatActivity implements OnRowClickListener {
 
     public static final int ROW_ACTION_FIRST = 1;
+    public static final int ROW_ACTION_SECOND = 2;
 
     private NormalRowView mRowFirst;
     private NormalRowView mRowSecond;
@@ -45,7 +46,7 @@ public class HomeActivity extends AppCompatActivity implements OnRowClickListene
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(ContextCompat.getColor(this,R.color.colorPrimary));
+            window.setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
         }
 
         findViews();
@@ -53,37 +54,39 @@ public class HomeActivity extends AppCompatActivity implements OnRowClickListene
     }
 
 
-
     private void findViews() {
         mBottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
         mHomeLayoutContainer = (LinearLayout) findViewById(R.id.home_layout_container);
-        NormalRowViewFactory normalRowViewFactory = new NormalRowViewFactory(this);
-        NormalRowView firstNormalRowView = normalRowViewFactory.createView(
-                NormalRowViewParams.build()
-                        .setIconAndContent(R.drawable.ic_qq_blue, "MY POSTS").
-                        setOnRowAction(ROW_ACTION_FIRST)
-                        .done()
-        );
-        mHomeLayoutContainer.addView(firstNormalRowView,0);
-        
+
+
+        GroupView groupView = new GroupView(this);
+        groupView.addChildView(NormalRowViewDescriptor.build()
+                .setIconAndContent(R.drawable.ic_qq_blue, "MY POSTS")
+                .setOnRowAction(ROW_ACTION_FIRST)
+                .done());
+        groupView.addChildView(NormalRowViewDescriptor.build()
+                .setIconAndContent(R.drawable.ic_wechat_blue, "MY CARS")
+                .setOnRowAction(ROW_ACTION_SECOND)
+                .done());
+        mHomeLayoutContainer.addView(groupView,0);
+        groupView.notifyChanged();
     }
 
- 
 
     private void initBottomNavigationBar() {
-        mBottomNavigationBar.addTab(R.drawable.selector_home,"微博",0xffdfb052);
-        mBottomNavigationBar.addTab(R.drawable.selector_home,"微博",0xffdfb052);
-        mBottomNavigationBar.addTab(R.drawable.selector_home,"QQ",0xffdf2052);
-        mBottomNavigationBar.addTab(R.drawable.selector_home,"QQ",0xffdf2052);
+        mBottomNavigationBar.addTab(R.drawable.selector_home, "微博", 0xffdfb052);
+        mBottomNavigationBar.addTab(R.drawable.selector_home, "微博", 0xffdfb052);
+        mBottomNavigationBar.addTab(R.drawable.selector_home, "QQ", 0xffdf2052);
+        mBottomNavigationBar.addTab(R.drawable.selector_home, "QQ", 0xffdf2052);
         mBottomNavigationBar.setOnTabListener(new BottomNavigationBar.TabListener() {
             @Override
             public void onSelected(BottomBarTab tab, int position) {
                 switch (position) {
                     case 0:
-                        Toast.makeText(getApplicationContext(),"On BottomBar Item Selected: "+ position,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "On BottomBar Item Selected: " + position, Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
-                        Toast.makeText(getApplicationContext(),"On BottomBar Item Selected: " + position,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "On BottomBar Item Selected: " + position, Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
@@ -96,13 +99,12 @@ public class HomeActivity extends AppCompatActivity implements OnRowClickListene
             public void run() {
                 mBottomNavigationBar.requestLayout();
             }
-        },100);
+        }, 100);
     }
 
 
-    
     @Override
     public void onRowClick(int action) {
-        Toast.makeText(this,"On Row click: " + action,Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "On Row click: " + action, Toast.LENGTH_SHORT).show();
     }
 }

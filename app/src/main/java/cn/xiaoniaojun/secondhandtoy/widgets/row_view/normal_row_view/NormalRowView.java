@@ -1,4 +1,4 @@
-package cn.xiaoniaojun.secondhandtoy.widgets.view_factories.row_view.normal_row_view;
+package cn.xiaoniaojun.secondhandtoy.widgets.row_view.normal_row_view;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import cn.xiaoniaojun.secondhandtoy.R;
-import cn.xiaoniaojun.secondhandtoy.widgets.view_factories.row_view.OnRowClickListener;
+import cn.xiaoniaojun.secondhandtoy.widgets.row_view.OnRowClickListener;
 
 
 /**
@@ -64,7 +64,7 @@ public class NormalRowView extends LinearLayout implements View.OnClickListener 
         tvRowContent.setText(content);
 
         mAction = action;
-        if (mAction != NormalRowViewParams.ROW_ACTION_NO_ACTION && mOnRowClickListener  != null ) {
+        if (mAction != NormalRowViewDescriptor.ROW_ACTION_NO_ACTION && mOnRowClickListener  != null ) {
             setOnClickListener(this);
             setBackgroundResource(R.drawable.widget_row_selector);
         } else {

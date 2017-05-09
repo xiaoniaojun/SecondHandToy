@@ -1,4 +1,4 @@
-package cn.xiaoniaojun.secondhandtoy.widgets.view_factories;
+package cn.xiaoniaojun.secondhandtoy.widgets.row_view.Base;
 
 import android.content.Context;
 import android.view.View;
@@ -16,5 +16,5 @@ public abstract class BaseViewFactory<V extends View> implements ViewFactory<V> 
     }
 
     @Override
-    public abstract V createView(BaseViewParams params);
+    public abstract V createView(BaseViewDescriptor params);
 }
