@@ -12,4 +12,6 @@
     <string name="fb_icon">Facebook icon</string>
     <string name="instagram_icon">Instagram Icon</string>
     <string name="str_place_holder">place holder</string>
+    <string name="str_shopping_cart">购物车</string>
+    <string name="str_hot_product">热门商品</string>
 </resources>

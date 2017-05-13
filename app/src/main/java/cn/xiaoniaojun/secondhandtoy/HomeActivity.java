@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -49,7 +50,7 @@ public class HomeActivity extends SupportActivity implements OnRowClickListener,
     private SupportFragment[] mFragments = new SupportFragment[4];
 
     private BottomNavigationBar mBottomNavigationBar;
-
+    private Toolbar mToolbar;
 
 
     @Override
@@ -57,16 +58,21 @@ public class HomeActivity extends SupportActivity implements OnRowClickListener,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_layout);
 
+        findViewsId();
+
+        setSupportActionBar(mToolbar);
+
+
         // 由于登陆页面效果中更改了系统状态栏背景色，
         // 这里需要将系统状态栏的背景色还原为主题颜色。
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
+            window.setStatusBarColor(ContextCompat.getColor(this, android.R.color.holo_orange_light));
         }
 
 
-        findViewsId();
+
 
         // 创建并设置4个主(Root)Fragment
         setupRootFragments(savedInstanceState);
@@ -87,7 +93,7 @@ public class HomeActivity extends SupportActivity implements OnRowClickListener,
 
     private void findViewsId() {
         mBottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
-
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
     }
 
