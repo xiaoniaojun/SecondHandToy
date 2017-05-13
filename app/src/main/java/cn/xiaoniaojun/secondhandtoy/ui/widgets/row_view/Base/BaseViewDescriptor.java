@@ -1,4 +1,4 @@
-package cn.xiaoniaojun.secondhandtoy.widgets.row_view.Base;
+package cn.xiaoniaojun.secondhandtoy.ui.widgets.row_view.Base;
 
 import android.os.Bundle;
 
@@ -11,6 +11,7 @@ public class BaseViewDescriptor {
 
     // 每增加一种RowView，都需要在这里为该类型添加一个索引号
     public static final int VIEW_TYPE_NORMAL_ROW = 0;
+    public static final int VIEW_TYPE_USER_INFO = 1;
     // public static final int VIEW_TYPE_ANOTHER_ROW = 3;
 
     private int viewType;

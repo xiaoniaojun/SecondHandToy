@@ -25,12 +25,10 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import cn.xiaoniaojun.secondhandtoy.HomeActivity;
-import cn.xiaoniaojun.secondhandtoy.R;
 import it.sephiroth.android.library.easing.Back;
 import it.sephiroth.android.library.easing.EasingManager;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     private ViewGroup rootLayout;
 
     @Override
@@ -38,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // findViews
         rootLayout = (ViewGroup) findViewById(R.id.main_container);
 
         EditText email = (EditText) findViewById(R.id.email);
@@ -53,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         tvLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -249,8 +246,8 @@ public class MainActivity extends AppCompatActivity {
                         findViewById(R.id.singup_big_tv).setVisibility(View.VISIBLE);
                     }
                 }, 100);
-                rootLayout.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.colorPrimary));
-                ((View) animationSquare.getParent()).setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.colorPrimary));
+                rootLayout.setBackgroundColor(ContextCompat.getColor(LoginActivity.this, R.color.colorPrimary));
+                ((View) animationSquare.getParent()).setBackgroundColor(ContextCompat.getColor(LoginActivity.this, R.color.colorPrimary));
                 findViewById(R.id.login_form_container).setVisibility(View.GONE);
                 findViewById(R.id.login_tv).setVisibility(View.GONE);
                 showLoginButton();
@@ -490,8 +487,8 @@ public class MainActivity extends AppCompatActivity {
                         findViewById(R.id.login_tv).bringToFront();
                     }
                 }, 100);
-                rootLayout.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.colorAccent));
-                ((View) animationSquare.getParent()).setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.colorAccent));
+                rootLayout.setBackgroundColor(ContextCompat.getColor(LoginActivity.this, R.color.colorAccent));
+                ((View) animationSquare.getParent()).setBackgroundColor(ContextCompat.getColor(LoginActivity.this, R.color.colorAccent));
                 findViewById(R.id.signup_form_container).setVisibility(View.GONE);
                 findViewById(R.id.singup_big_tv).setVisibility(View.GONE);
                 showSignUpButton();

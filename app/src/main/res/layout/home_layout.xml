@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/home_layout_container"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/normal_background">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:id="@+id/home_layout_container"
+             android:orientation="vertical"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@color/normal_background">
+
+    <FrameLayout
+        android:id="@+id/fl_fragment_holder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 
     <cn.xiaoniaojun.bottomnavigationbar.BottomNavigationBar
         android:id="@+id/bottom_navigation_bar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:layout_gravity="bottom">
+        android:layout_gravity="bottom" />
 
-    </cn.xiaoniaojun.bottomnavigationbar.BottomNavigationBar>
-
-</LinearLayout>
+</FrameLayout>

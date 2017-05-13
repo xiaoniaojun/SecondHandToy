@@ -1,8 +1,8 @@
-package cn.xiaoniaojun.secondhandtoy.widgets.group_view;
+package cn.xiaoniaojun.secondhandtoy.ui.widgets.group_view;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -10,9 +10,10 @@ import android.widget.LinearLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.xiaoniaojun.secondhandtoy.widgets.row_view.Base.BaseViewDescriptor;
-import cn.xiaoniaojun.secondhandtoy.widgets.row_view.normal_row_view.NormalRowView;
-import cn.xiaoniaojun.secondhandtoy.widgets.row_view.normal_row_view.NormalRowViewFactory;
+import cn.xiaoniaojun.secondhandtoy.R;
+import cn.xiaoniaojun.secondhandtoy.ui.widgets.row_view.Base.BaseViewDescriptor;
+import cn.xiaoniaojun.secondhandtoy.ui.widgets.row_view.Base.BaseViewFactory;
+
 
 /**
  * Package: com.github.ypicoleal.logindemo.widgets
@@ -22,6 +23,7 @@ import cn.xiaoniaojun.secondhandtoy.widgets.row_view.normal_row_view.NormalRowVi
 public class GroupView extends LinearLayout implements GroupDuty {
 
     ArrayList<BaseViewDescriptor> childViewDescriptors = new ArrayList<>();
+
 
 
     public GroupView(Context context) {
@@ -39,14 +41,13 @@ public class GroupView extends LinearLayout implements GroupDuty {
 
     private void configViewParams() {
         setOrientation(VERTICAL);
-
     }
 
     private View createSpaceView() {
         View view = new View(getContext());
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, 2);
         view.setLayoutParams(params);
-        view.setBackgroundColor(Color.argb(2, 255, 255, 255));
+        view.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.normal_background));
         return view;
     }
 
@@ -65,31 +66,21 @@ public class GroupView extends LinearLayout implements GroupDuty {
     }
 
     @Override
-    public void notifyChanged() {
-        notifyChangedAt(0);
+    public void notifyChanged(BaseViewFactory factory) {
+        notifyChangedAt(0, factory);
     }
 
     @Override
-    public void notifyChangedAt(int index) {
+    public void notifyChangedAt(int index, BaseViewFactory factory) {
+        Context context = getContext();
         for (int i = index; i < childViewDescriptors.size(); i++) {
             BaseViewDescriptor descriptor = childViewDescriptors.get(i);
-            int viewType = descriptor.getViewType();
-            switch (viewType) {
-                case BaseViewDescriptor.VIEW_TYPE_NORMAL_ROW:
-                    NormalRowViewFactory factory = new NormalRowViewFactory(getContext());
-                    NormalRowView view = factory.createView(descriptor);
-                    addView(view);
-                    if (i != childViewDescriptors.size()) {
-                        addView(createSpaceView());
-                    }
-                    break;
-                default:
-                    try {
-                        throw new Exception("无法创建该View，请为它创建相应的工厂类。");
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-            }
+            View view = factory.createView(descriptor, context);
+            addView(view);
+            View spaceView = createSpaceView();
+            addView(spaceView);
+
+
         }
         requestLayout();
     }

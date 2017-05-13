@@ -2,23 +2,29 @@ package cn.xiaoniaojun.secondhandtoy;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.LinearLayout;
+import android.widget.FrameLayout;
 import android.widget.Toast;
-
-
-import android.os.Handler;
 
 import cn.xiaoniaojun.bottomnavigationbar.BottomBarTab;
 import cn.xiaoniaojun.bottomnavigationbar.BottomNavigationBar;
-import cn.xiaoniaojun.secondhandtoy.widgets.group_view.GroupView;
-import cn.xiaoniaojun.secondhandtoy.widgets.row_view.OnRowClickListener;
-import cn.xiaoniaojun.secondhandtoy.widgets.row_view.normal_row_view.NormalRowView;
-import cn.xiaoniaojun.secondhandtoy.widgets.row_view.normal_row_view.NormalRowViewDescriptor;
+import cn.xiaoniaojun.secondhandtoy.ui.fragments.UserInfoPage.UserInfoFragment;
+import cn.xiaoniaojun.secondhandtoy.ui.interfaces.OnBackToFirstFragmentListener;
+import cn.xiaoniaojun.secondhandtoy.ui.widgets.container_view.ContainerView;
+import cn.xiaoniaojun.secondhandtoy.ui.widgets.group_view.GroupViewDescriptor;
+import cn.xiaoniaojun.secondhandtoy.ui.widgets.group_view.GroupViewFactory;
+import cn.xiaoniaojun.secondhandtoy.ui.widgets.row_view.OnRowClickListener;
+import cn.xiaoniaojun.secondhandtoy.ui.widgets.row_view.normal_row_view.NormalRowViewDescriptor;
+import cn.xiaoniaojun.secondhandtoy.ui.widgets.row_view.normal_row_view.NormalRowViewFactory;
+import cn.xiaoniaojun.secondhandtoy.ui.widgets.row_view.user_info_row_view.UserInfoRowViewFactory;
+import me.yokeyword.fragmentation.SupportActivity;
+import me.yokeyword.fragmentation.SupportFragment;
 
 
 /**
@@ -26,16 +32,24 @@ import cn.xiaoniaojun.secondhandtoy.widgets.row_view.normal_row_view.NormalRowVi
  * Created by hackpoint on 2017/5/6.
  */
 
-public class HomeActivity extends AppCompatActivity implements OnRowClickListener {
+public class HomeActivity extends SupportActivity implements OnRowClickListener, OnBackToFirstFragmentListener{
 
     public static final int ROW_ACTION_FIRST = 1;
     public static final int ROW_ACTION_SECOND = 2;
 
-    private NormalRowView mRowFirst;
-    private NormalRowView mRowSecond;
+    // Root Fragments
+    // 分别表示(1)首页、(2)正在出售的玩具列表页、(3)玩具出售发布页面、(4)用户个人信息页面
+    private static final int FRAGMENT_HOME = 0;
+    private static final int FRAGMENT_OFFER_TOYS = 1;
+    private static final int FRAGMENT_SALE_TOYS = 2;
+    private static final int FRAGMENT_USER_INFO = 3;
+
+
+
+    private SupportFragment[] mFragments = new SupportFragment[4];
 
     private BottomNavigationBar mBottomNavigationBar;
-    private LinearLayout mHomeLayoutContainer;
+
 
 
     @Override
@@ -43,51 +57,61 @@ public class HomeActivity extends AppCompatActivity implements OnRowClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_layout);
 
+        // 由于登陆页面效果中更改了系统状态栏背景色，
+        // 这里需要将系统状态栏的背景色还原为主题颜色。
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
         }
 
-        findViews();
+
+        findViewsId();
+
+        // 创建并设置4个主(Root)Fragment
+        setupRootFragments(savedInstanceState);
+        // 设置底部导航条(Bottom Navigation Bar)
         initBottomNavigationBar();
     }
 
+    private void setupRootFragments(Bundle savedInstanceState) {
+        if (savedInstanceState == null) {
+            mFragments[FRAGMENT_USER_INFO] = UserInfoFragment.newInstance();
+            loadRootFragment(R.id.fl_fragment_holder,mFragments[FRAGMENT_USER_INFO]);
+        } else {
+            mFragments[FRAGMENT_USER_INFO] = findFragment(UserInfoFragment.class);
+        }
 
-    private void findViews() {
+    }
+
+
+    private void findViewsId() {
         mBottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
-        mHomeLayoutContainer = (LinearLayout) findViewById(R.id.home_layout_container);
 
 
-        GroupView groupView = new GroupView(this);
-        groupView.addChildView(NormalRowViewDescriptor.build()
-                .setIconAndContent(R.drawable.ic_qq_blue, "MY POSTS")
-                .setOnRowAction(ROW_ACTION_FIRST)
-                .done());
-        groupView.addChildView(NormalRowViewDescriptor.build()
-                .setIconAndContent(R.drawable.ic_wechat_blue, "MY CARS")
-                .setOnRowAction(ROW_ACTION_SECOND)
-                .done());
-        mHomeLayoutContainer.addView(groupView,0);
-        groupView.notifyChanged();
     }
 
 
     private void initBottomNavigationBar() {
-        mBottomNavigationBar.addTab(R.drawable.selector_home, "微博", 0xffdfb052);
-        mBottomNavigationBar.addTab(R.drawable.selector_home, "微博", 0xffdfb052);
-        mBottomNavigationBar.addTab(R.drawable.selector_home, "QQ", 0xffdf2052);
-        mBottomNavigationBar.addTab(R.drawable.selector_home, "QQ", 0xffdf2052);
+        mBottomNavigationBar.addTab(R.drawable.selector_home, "主页", 0xffdfb052);
+        mBottomNavigationBar.addTab(R.drawable.selector_home, "玩具", 0xff12b052);
+        mBottomNavigationBar.addTab(R.drawable.selector_home, "发布", 0xff342052);
+        mBottomNavigationBar.addTab(R.drawable.selector_home, "我", 0xffdf2052);
         mBottomNavigationBar.setOnTabListener(new BottomNavigationBar.TabListener() {
             @Override
             public void onSelected(BottomBarTab tab, int position) {
                 switch (position) {
-                    case 0:
-                        Toast.makeText(getApplicationContext(), "On BottomBar Item Selected: " + position, Toast.LENGTH_SHORT).show();
+                    case FRAGMENT_HOME:
+                        Toast.makeText(getApplicationContext(), "Home Fragment Loaded!", Toast.LENGTH_SHORT).show();
                         break;
-                    case 1:
-                        Toast.makeText(getApplicationContext(), "On BottomBar Item Selected: " + position, Toast.LENGTH_SHORT).show();
+                    case FRAGMENT_OFFER_TOYS:
+                        Toast.makeText(getApplicationContext(), "ToysOnOffer Fragment Loaded", Toast.LENGTH_SHORT).show();
                         break;
+                    case FRAGMENT_SALE_TOYS:
+                        break;
+                    case FRAGMENT_USER_INFO:
+
+
                 }
             }
         });
@@ -107,4 +131,11 @@ public class HomeActivity extends AppCompatActivity implements OnRowClickListene
     public void onRowClick(int action) {
         Toast.makeText(this, "On Row click: " + action, Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onBackToFirstFragment() {
+
+    }
+
+    //TODO: OnBackPressToFragment
 }

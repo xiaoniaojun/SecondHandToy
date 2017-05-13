@@ -1,8 +1,9 @@
-package cn.xiaoniaojun.secondhandtoy.widgets.group_view;
+package cn.xiaoniaojun.secondhandtoy.ui.widgets.group_view;
 
 import java.util.List;
 
-import cn.xiaoniaojun.secondhandtoy.widgets.row_view.Base.BaseViewDescriptor;
+import cn.xiaoniaojun.secondhandtoy.ui.widgets.row_view.Base.BaseViewDescriptor;
+import cn.xiaoniaojun.secondhandtoy.ui.widgets.row_view.Base.BaseViewFactory;
 
 /**
  *  管理GroupView的行为。
@@ -16,8 +17,8 @@ public interface GroupDuty {
     public void addChildViews(List<BaseViewDescriptor> descriptors);
 
     // 通知GroupView初始化子View并为它们定位
-    public void notifyChanged();
+    public void notifyChanged(BaseViewFactory factory);
 
     // 通知GroupView从某个位置初始化子View并为它们定位
-    public void notifyChangedAt(int index);
+    public void notifyChangedAt(int index,BaseViewFactory factory);
 }

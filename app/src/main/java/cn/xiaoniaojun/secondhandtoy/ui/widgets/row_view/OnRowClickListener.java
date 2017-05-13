@@ -1,4 +1,4 @@
-package cn.xiaoniaojun.secondhandtoy.widgets.row_view;
+package cn.xiaoniaojun.secondhandtoy.ui.widgets.row_view;
 
 /**
  * Package: com.github.ypicoleal.logindemo.widgets.view_factories.row_view

@@ -1,12 +1,12 @@
-package cn.xiaoniaojun.secondhandtoy.widgets.group_view;
+package cn.xiaoniaojun.secondhandtoy.ui.widgets.group_view;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.xiaoniaojun.secondhandtoy.widgets.row_view.Base.BaseViewDescriptor;
+import cn.xiaoniaojun.secondhandtoy.ui.widgets.row_view.Base.BaseViewDescriptor;
 
 /**
- * Package: cn.xiaoniaojun.secondhandtoy.widgets.group_view
+ * Package: cn.xiaoniaojun.secondhandtoy.ui.widgets.group_view
  * Created by hackpoint on 2017/5/9.
  */
 

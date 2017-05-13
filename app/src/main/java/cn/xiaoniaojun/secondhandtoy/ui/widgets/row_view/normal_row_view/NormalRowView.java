@@ -1,6 +1,7 @@
-package cn.xiaoniaojun.secondhandtoy.widgets.row_view.normal_row_view;
+package cn.xiaoniaojun.secondhandtoy.ui.widgets.row_view.normal_row_view;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -11,7 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import cn.xiaoniaojun.secondhandtoy.R;
-import cn.xiaoniaojun.secondhandtoy.widgets.row_view.OnRowClickListener;
+import cn.xiaoniaojun.secondhandtoy.ui.widgets.row_view.OnRowClickListener;
 
 
 /**
@@ -64,11 +65,11 @@ public class NormalRowView extends LinearLayout implements View.OnClickListener 
         tvRowContent.setText(content);
 
         mAction = action;
-        if (mAction != NormalRowViewDescriptor.ROW_ACTION_NO_ACTION && mOnRowClickListener  != null ) {
+        if (mAction != NormalRowViewDescriptor.ROW_ACTION_NO_ACTION && mOnRowClickListener  != null) {
             setOnClickListener(this);
             setBackgroundResource(R.drawable.widget_row_selector);
         } else {
-            setBackgroundResource(R.color.normal_background);
+            setBackgroundColor(Color.WHITE);
             btnRowClickable.setVisibility(GONE);
         }
 
@@ -76,6 +77,8 @@ public class NormalRowView extends LinearLayout implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        mOnRowClickListener.onRowClick(mAction);
+        if (mOnRowClickListener != null) {
+            mOnRowClickListener.onRowClick(mAction);
+        }
     }
 }

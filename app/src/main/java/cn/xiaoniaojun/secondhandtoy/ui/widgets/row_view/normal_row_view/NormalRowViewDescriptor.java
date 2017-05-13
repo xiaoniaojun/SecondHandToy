@@ -1,19 +1,19 @@
-package cn.xiaoniaojun.secondhandtoy.widgets.row_view.normal_row_view;
+package cn.xiaoniaojun.secondhandtoy.ui.widgets.row_view.normal_row_view;
 
 import android.os.Bundle;
 
-import cn.xiaoniaojun.secondhandtoy.widgets.row_view.Base.BaseViewDescriptor;
+import cn.xiaoniaojun.secondhandtoy.ui.widgets.row_view.Base.BaseViewDescriptor;
 
 
 /**
- * Package: cn.xiaoniaojun.secondhandtoy.widgets.row_view.Base.BaseViewDescriptor
+ * Package: cn.xiaoniaojun.secondhandtoy.ui.widgets.row_view.Base.BaseViewDescriptor
  * Created by hackpoint on 2017/5/9.
  */
 
 public class NormalRowViewDescriptor extends BaseViewDescriptor {
 
     // RowClick事件枚举值(替代Enum类)
-    public static final int ROW_ACTION_NO_ACTION = 0;
+    static final int ROW_ACTION_NO_ACTION = 0;
 
 
     private NormalRowViewDescriptor(int viewType) {
@@ -45,7 +45,7 @@ public class NormalRowViewDescriptor extends BaseViewDescriptor {
         }
 
         public NormalRowViewDescriptor done() {
-            NormalRowViewDescriptor params = new NormalRowViewDescriptor(BaseViewDescriptor.VIEW_TYPE_NORMAL_ROW);
+            NormalRowViewDescriptor descriptor = new NormalRowViewDescriptor(BaseViewDescriptor.VIEW_TYPE_NORMAL_ROW);
             Bundle bundle = new Bundle();
             if (content == null && icon == 0) {
                 try {
@@ -58,8 +58,8 @@ public class NormalRowViewDescriptor extends BaseViewDescriptor {
                 bundle.putInt("icon", icon);
             }
             bundle.putInt("action", action);
-            params.setParams(bundle);
-            return params;
+            descriptor.setParams(bundle);
+            return descriptor;
         }
     }
 
