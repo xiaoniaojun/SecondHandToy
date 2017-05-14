@@ -109,6 +109,7 @@ public class HomeActivity extends SupportActivity implements OnRowClickListener,
         mBottomNavigationBar.addTab(R.drawable.selector_home, "玩具", 0xff12b052);
         mBottomNavigationBar.addTab(R.drawable.selector_home, "发布", 0xff342052);
         mBottomNavigationBar.addTab(R.drawable.selector_home, "我", 0xffdf2052);
+        mBottomNavigationBar.setTextDefaultVisible(true);
         mBottomNavigationBar.setOnTabListener(new BottomNavigationBar.TabListener() {
             @Override
             public void onSelected(BottomBarTab tab, int position, int preposition) {
