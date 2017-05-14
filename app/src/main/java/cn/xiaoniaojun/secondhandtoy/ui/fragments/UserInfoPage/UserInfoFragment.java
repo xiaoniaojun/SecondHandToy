@@ -31,8 +31,7 @@ public class UserInfoFragment extends BaseMainFragment {
 
 
     public static UserInfoFragment newInstance() {
-        UserInfoFragment userInfoFragment = new UserInfoFragment();
-        return userInfoFragment;
+        return new UserInfoFragment();
     }
 
     @Nullable

@@ -42,6 +42,7 @@ public class BottomNavigationBar extends LinearLayout {
 
     private float textDefaultScale;
 
+    private int prePosition;
     private int currentPosition;
 
     public int animation_duration = 150;
@@ -243,7 +244,9 @@ public class BottomNavigationBar extends LinearLayout {
         for (int i = 0; i < tabList.size(); i++) {
             final BottomBarTab tab = tabList.get(i);
             if (selected.equals(tab)) {
-                mTabListener.onSelected(tab, i);
+                this.currentPosition = i;
+                mTabListener.onSelected(tab, i, prePosition);
+                this.prePosition = this.currentPosition;
                 if (!tab.isSelected()) {
                     tab.setSelected(true);
 
@@ -252,7 +255,6 @@ public class BottomNavigationBar extends LinearLayout {
                     tab.textScaleAnimator(1);
                     tab.imageTranslationAnimator(imageDefaultTop, imageSelectedTop);
                     tab.animatorsStart(animation_duration);
-
                     ripple(tab, tab.color);
                 }
             } else {
@@ -273,7 +275,7 @@ public class BottomNavigationBar extends LinearLayout {
     }
 
     public interface TabListener {
-        void onSelected(BottomBarTab tab, int position);
+        void onSelected(BottomBarTab tab, int position, int pre);
     }
 
 

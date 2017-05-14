@@ -6,13 +6,16 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Gallery;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Scroller;
 
 import com.bumptech.glide.Glide;
@@ -38,7 +41,7 @@ public class NormalCarousel extends ViewGroup {
     private Paint mSelectedIndicatorPaint;
     private Paint mUnSelectedIndicatorPaint;
 
-    private ArrayList<ImageView> mContentImageViews;
+    private ArrayList<ImageView> mContentImageViews = new ArrayList<>();
     private int mContentSize;
     private int mViewHeight;
     private int mInterval = 500;
@@ -106,6 +109,8 @@ public class NormalCarousel extends ViewGroup {
         final Context context = getContext();
         for (int i = 0; i < mContentSize; i++) {
             ImageView iv = new ImageView(context);
+            LayoutParams lp = new ViewGroup.LayoutParams(SCREEN_WIDTH, mViewHeight);
+            iv.setLayoutParams(lp);
             mContentImageViews.add(iv);
             addView(iv);
         }
@@ -177,22 +182,14 @@ public class NormalCarousel extends ViewGroup {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
-
         mContentSize = mContentImageViews.size();
 
-        int measuredWidth = SCREEN_WIDTH;
-        int measuredHeight = mViewHeight;
-
         if (mContentSize > 0) {
-            measuredWidth = SCREEN_WIDTH * mContentSize;
-            for (ImageView iv : mContentImageViews) {
-                final LayoutParams lp = iv.getLayoutParams();
-                lp.width = SCREEN_WIDTH;
-                lp.height = measuredHeight;
-            }
-        }
+            int measuredWidth = SCREEN_WIDTH * mContentSize;
+            int measuredHeight = mViewHeight;
 
-        setMeasuredDimension(measuredWidth, measuredHeight);
+            setMeasuredDimension(measuredWidth, measuredHeight);
+        }
     }
 
     @Override
@@ -270,6 +267,7 @@ public class NormalCarousel extends ViewGroup {
     private void init() {
         mScroller = new Scroller(getContext());
         mVelocityTracker = VelocityTracker.obtain();
+        setBackgroundColor(ContextCompat.getColor(getContext(),android.R.color.white));
     }
 
     private void smoothScrollBy(int dx, int dy) {

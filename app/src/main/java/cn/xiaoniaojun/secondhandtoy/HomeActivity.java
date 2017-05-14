@@ -4,8 +4,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentHostCallback;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 
 import cn.xiaoniaojun.bottomnavigationbar.BottomBarTab;
 import cn.xiaoniaojun.bottomnavigationbar.BottomNavigationBar;
+import cn.xiaoniaojun.secondhandtoy.ui.fragments.HomePage.HomeFragment;
 import cn.xiaoniaojun.secondhandtoy.ui.fragments.UserInfoPage.UserInfoFragment;
 import cn.xiaoniaojun.secondhandtoy.ui.interfaces.OnBackToFirstFragmentListener;
 import cn.xiaoniaojun.secondhandtoy.ui.widgets.container_view.ContainerView;
@@ -82,9 +85,12 @@ public class HomeActivity extends SupportActivity implements OnRowClickListener,
 
     private void setupRootFragments(Bundle savedInstanceState) {
         if (savedInstanceState == null) {
+            mFragments[FRAGMENT_HOME] = HomeFragment.newInstance();
             mFragments[FRAGMENT_USER_INFO] = UserInfoFragment.newInstance();
-            loadRootFragment(R.id.fl_fragment_holder,mFragments[FRAGMENT_USER_INFO]);
+            loadMultipleRootFragment(R.id.fl_fragment_holder,FRAGMENT_HOME,mFragments[FRAGMENT_HOME],mFragments[FRAGMENT_USER_INFO]);
         } else {
+
+            mFragments[FRAGMENT_HOME] = findFragment(HomeFragment.class);
             mFragments[FRAGMENT_USER_INFO] = findFragment(UserInfoFragment.class);
         }
 
@@ -105,7 +111,9 @@ public class HomeActivity extends SupportActivity implements OnRowClickListener,
         mBottomNavigationBar.addTab(R.drawable.selector_home, "我", 0xffdf2052);
         mBottomNavigationBar.setOnTabListener(new BottomNavigationBar.TabListener() {
             @Override
-            public void onSelected(BottomBarTab tab, int position) {
+            public void onSelected(BottomBarTab tab, int position, int preposition) {
+                Log.v("MainActivity","position:"+position+"preposition:"+preposition);
+                showHideFragment(mFragments[position], mFragments[preposition]);
                 switch (position) {
                     case FRAGMENT_HOME:
                         Toast.makeText(getApplicationContext(), "Home Fragment Loaded!", Toast.LENGTH_SHORT).show();
@@ -129,7 +137,7 @@ public class HomeActivity extends SupportActivity implements OnRowClickListener,
             public void run() {
                 mBottomNavigationBar.requestLayout();
             }
-        }, 100);
+        }, 300);
     }
 
 
