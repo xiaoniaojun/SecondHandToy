@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:id="@+id/fl_fragment_content_holder"
+             android:background="@color/normal_background"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <cn.xiaoniaojun.carousel.normalcarousel.NormalCarouselView
+                android:id="@+id/stub_carousel_head"
+                android:layout_width="match_parent"
+                android:layout_height="114dp"/>
+
+            <LinearLayout
+                android:layout_marginBottom="1dp"
+                android:layout_width="match_parent"
+                android:layout_height="72dp">
+
+                <include layout="@layout/grid_category_stuffed_toys"/>
+                <include layout="@layout/grid_category_electronic_toys" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="72dp">
+
+                <include layout="@layout/grid_category_educational_toys" />
+                <include layout="@layout/grid_category_rest_toys" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+</FrameLayout>
+

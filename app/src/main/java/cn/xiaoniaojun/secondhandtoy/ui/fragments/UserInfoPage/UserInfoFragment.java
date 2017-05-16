@@ -2,7 +2,6 @@ package cn.xiaoniaojun.secondhandtoy.ui.fragments.UserInfoPage;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,12 +10,10 @@ import cn.xiaoniaojun.secondhandtoy.R;
 import cn.xiaoniaojun.secondhandtoy.ui.fragments.BaseMainFragment;
 import cn.xiaoniaojun.secondhandtoy.ui.widgets.container_view.ContainerView;
 import cn.xiaoniaojun.secondhandtoy.ui.widgets.group_view.GroupViewDescriptor;
-import cn.xiaoniaojun.secondhandtoy.ui.widgets.group_view.GroupViewFactory;
 import cn.xiaoniaojun.secondhandtoy.ui.widgets.row_view.Base.BaseViewDescriptor;
 import cn.xiaoniaojun.secondhandtoy.ui.widgets.row_view.normal_row_view.NormalRowViewDescriptor;
 import cn.xiaoniaojun.secondhandtoy.ui.widgets.row_view.normal_row_view.NormalRowViewFactory;
 import cn.xiaoniaojun.secondhandtoy.ui.widgets.row_view.user_info_row_view.UserInfoRowDescriptor;
-import cn.xiaoniaojun.secondhandtoy.ui.widgets.row_view.user_info_row_view.UserInfoRowView;
 import cn.xiaoniaojun.secondhandtoy.ui.widgets.row_view.user_info_row_view.UserInfoRowViewFactory;
 
 /**
@@ -39,7 +36,7 @@ public class UserInfoFragment extends BaseMainFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
 
-        return inflater.inflate(R.layout.main_fragment_layout, container, false);
+        return inflater.inflate(R.layout.user_info_fragment_layout, container, false);
     }
 
     @Override

@@ -5,7 +5,6 @@ import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.support.annotation.IntDef;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -17,34 +16,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Scroller;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
-
-import org.reactivestreams.Subscriber;
-
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
-
 import cn.xiaoniaojun.bottomnavigationbar.R;
 import io.reactivex.Observable;
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
-import io.reactivex.subjects.PublishSubject;
 
 /**
  * Package: cn.xiaoniaojun.carousel.normalcarousel
  * Created by xiaoniaojun on 2017/5/13.
  */
 
-public class NormalCarousel extends ViewGroup {
+public class NormalCarouselView extends ViewGroup {
 
 
-    // TODO: 定时轮播
+    // TODO: 回调函数
 
     // limit the max number of carousel
     public static final int MAX_ALLOWED = 5;
@@ -74,15 +66,15 @@ public class NormalCarousel extends ViewGroup {
     private int mLastX;
 
 
-    public NormalCarousel(Context context) {
+    public NormalCarouselView(Context context) {
         this(context, null, 0);
     }
 
-    public NormalCarousel(Context context, AttributeSet attrs) {
+    public NormalCarouselView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public NormalCarousel(Context context, AttributeSet attrs, int defStyleAttr) {
+    public NormalCarouselView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
@@ -278,6 +270,7 @@ public class NormalCarousel extends ViewGroup {
             case MotionEvent.ACTION_DOWN:
                 break;
             case MotionEvent.ACTION_MOVE:
+                Log.v("轮播图", "ACTION_MOVE!");
                 int scrollX = getScrollX();
                 if (scrollX > 0 && scrollX < SCREEN_WIDTH * (mContentSize - 1)) {
                 int dX = x - mLastX;
