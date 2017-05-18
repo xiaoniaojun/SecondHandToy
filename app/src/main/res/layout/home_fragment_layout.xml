@@ -13,7 +13,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <cn.xiaoniaojun.carousel.normalcarousel.NormalCarouselView
+            <cn.xiaoniaojun.bottomnavigationbar.CarouselView
+                android:background="@android:color/white"
                 android:id="@+id/stub_carousel_head"
                 android:layout_width="match_parent"
                 android:layout_height="114dp"/>

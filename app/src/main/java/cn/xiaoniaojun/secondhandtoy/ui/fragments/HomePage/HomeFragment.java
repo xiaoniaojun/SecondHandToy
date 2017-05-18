@@ -1,5 +1,7 @@
 package cn.xiaoniaojun.secondhandtoy.ui.fragments.HomePage;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -7,7 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridLayout;
 
-import cn.xiaoniaojun.carousel.normalcarousel.NormalCarouselView;
+import java.util.ArrayList;
+import java.util.List;
+
+import cn.xiaoniaojun.bottomnavigationbar.CarouselView;
 import cn.xiaoniaojun.secondhandtoy.R;
 import cn.xiaoniaojun.secondhandtoy.ui.fragments.BaseMainFragment;
 
@@ -19,8 +24,7 @@ import cn.xiaoniaojun.secondhandtoy.ui.fragments.BaseMainFragment;
 public class HomeFragment extends BaseMainFragment {
 
     final private HomeFragment mFragment = this;
-    private NormalCarouselView mCarouselView;
-    private GridLayout mGridCategory;
+    private CarouselView mHeadCarouselView;
 
     public static HomeFragment newInstance() {
         return new HomeFragment();
@@ -34,9 +38,29 @@ public class HomeFragment extends BaseMainFragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        mCarouselView = (NormalCarouselView) view.findViewById(R.id.stub_carousel_head);
-        mCarouselView.config(4,500,5000);
+
+        mHeadCarouselView = (CarouselView) view.findViewById(R.id.stub_carousel_head);
 
 
+    }
+
+    @Override
+    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
+        super.onLazyInitView(savedInstanceState);
+        final List<Bitmap> carouselBitmapList = new ArrayList<>();
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.carousel_1);
+        carouselBitmapList.add(bitmap);
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.carousel_2);
+        carouselBitmapList.add(bitmap);
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.carousel_3);
+        carouselBitmapList.add(bitmap);
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.carousel_4);
+        carouselBitmapList.add(bitmap);
+        mHeadCarouselView.post(new Runnable() {
+            @Override
+            public void run() {
+                mHeadCarouselView.setCarouselImages(carouselBitmapList);
+            }
+        });
     }
 }

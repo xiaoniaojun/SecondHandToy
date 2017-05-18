@@ -1,18 +1,24 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion setup.compileSdk
+    buildToolsVersion setup.buildTools
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 25
+        minSdkVersion setup.minSdk
+        targetSdkVersion setup.targetSdk
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
 
     }
+
+    dataBinding {
+        enabled = true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -26,13 +32,32 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.android.support:appcompat-v7:25.3.1'
+
     testCompile 'junit:junit:4.12'
 
     compile 'com.android.support:recyclerview-v7:25.3.1'
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-// Because RxAndroid releases are few and far between, it is recommended you also
-// explicitly depend on RxJava's latest version for bug fixes and new features.
-    compile 'io.reactivex.rxjava2:rxjava:2.1.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+
+    //NetWork
+    compile "com.squareup.okio:okio:${versions.okio}"
+    compile "com.squareup.okhttp3:okhttp:${versions.okhttp3}"
+
+
+
+    //Retrofit
+    compile "com.squareup.retrofit2:retrofit:${versions.retrofit2}"
+    compile "com.squareup.retrofit2:converter-gson:${versions.retrofit2}"
+    compile "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit2}"
+
+    //ImageLoader
+    compile "com.facebook.fresco:fresco:${versions.fresco}"
+    compile "com.facebook.fresco:imagepipeline-okhttp3:${versions.fresco}"
+
+    //ReactiveX
+    compile "io.reactivex.rxjava2:rxjava:${versions.rxjava}"
+    compile "io.reactivex.rxjava2:rxandroid:${versions.rxandroid}"
+
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.16'
+
 }
