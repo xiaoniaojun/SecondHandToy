@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="cn.xiaoniaojun.secondhandtoy.R" />
+
+        <variable
+            name="entity"
+            type="cn.xiaoniaojun.secondhandtoy.mvvm.M.entity.HomeListEntity"/>
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp">
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="12dp"
+            android:paddingEnd="16dp"
+            android:paddingStart="16dp"
+            android:paddingTop="12dp"
+            card_view:cardUseCompatPadding="true"
+            card_view:cardCornerRadius="4dp"
+            card_view:cardElevation="4dp"
+            tools:layout_weight="match_parent">
+
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:lines="1"
+                    android:text="@{entity.title}"
+                    android:textColor="?attr/editTextColor"
+                    android:textSize="16sp"
+                    fresco:layout_constraintLeft_toLeftOf="@+id/guideline2"
+                    fresco:layout_constraintTop_toTopOf="parent"
+                    tools:text="九阳真经"/>
+
+                <TextView
+                    android:id="@+id/tv_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="8dp"
+                    android:lines="1"
+                    android:text="@{entity.date}"
+                    fresco:layout_constraintLeft_toLeftOf="@+id/guideline2"
+                    fresco:layout_constraintTop_toBottomOf="@+id/tv_title"
+                    tools:ignore="RtlHardcoded"
+                    tools:text="500年前"/>
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/imgv"
+                    android:layout_width="0dp"
+                    android:layout_height="270dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="8dp"
+                    fresco:actualImageUri="@{entity.imgUrl}"
+                    fresco:layout_constraintBottom_toTopOf="@+id/tv_read_more"
+                    fresco:layout_constraintHorizontal_bias="0.0"
+                    fresco:layout_constraintLeft_toLeftOf="@+id/guideline2"
+                    fresco:layout_constraintRight_toRightOf="parent"
+                    fresco:layout_constraintTop_toBottomOf="@+id/tv_date"
+                    fresco:layout_constraintVertical_bias="0.0"/>
+
+                <TextView
+                    android:id="@+id/tv_read_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:text="@string/constr_read_more"
+                    android:textColor="?attr/editTextColor"
+                    fresco:layout_constraintBottom_toBottomOf="parent"
+                    fresco:layout_constraintLeft_toLeftOf="@+id/guideline2"
+                    tools:text="查看全文"/>
+
+                <android.support.constraint.Guideline
+                    android:id="@+id/guideline2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    fresco:layout_constraintGuide_begin="16dp"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="25dp"/>
+
+
+            </android.support.constraint.ConstraintLayout>
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+
+
+
+</layout>
