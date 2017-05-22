@@ -37,7 +37,7 @@
                     android:gravity="center"
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"
-                    android:text="@string/str_hot_product" />
+                    android:text="@string/hot_product" />
             </RelativeLayout>
 
 
@@ -62,7 +62,7 @@
                 android:layout_height="match_parent">
 
                 <android.support.v7.widget.RecyclerView
-                    android:id="@+id/list"
+                    android:id="@+id/homelist"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
             </FrameLayout>

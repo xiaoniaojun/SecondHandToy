@@ -11,18 +11,12 @@
     <string name="or">OR</string>
     <string name="fb_icon">Facebook icon</string>
     <string name="instagram_icon">Instagram Icon</string>
-    <string name="str_place_holder">place holder</string>
-    <string name="str_shopping_cart">购物车</string>
-    <string name="str_hot_product">热门商品</string>
-    <string name="str_category_image">玩具种类图片</string>
-    <string name="str_stuffed_toys_title">毛绒玩具</string>
-    <string name="str_stuffed_toys_intro">给孩子一个安静的伙伴</string>
-    <string name="str_electronic_toys_title">电动玩具</string>
-    <string name="str_electronic_toys_intro">每个小男孩都做过的梦</string>
-    <string name="str_educational_toys_title">教育类玩具</string>
-    <string name="str_educational_toys_intro">让孩子在玩耍中成长</string>
-    <string name="str_rest_toys_title">其他</string>
-    <string name="str_rest_toys_intro">其他类型的玩具</string>
-    <string name="str_const_option">选项</string>
+    <string name="place_holder">place holder</string>
+    <string name="shopping_cart">购物车</string>
+    <string name="hot_product">热门商品</string>
+    <string name="category_image">玩具种类图片</string>
+    <string name="option">选项</string>
     <string name="constr_read_more">查看全文</string>
+    <string name="constr_category">分类</string>
+    <string name="back">back</string>
 </resources>

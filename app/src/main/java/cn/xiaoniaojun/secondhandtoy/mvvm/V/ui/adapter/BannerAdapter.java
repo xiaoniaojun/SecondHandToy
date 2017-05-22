@@ -42,8 +42,7 @@ public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.ViewHolder
         ItemBannerListBinding binding = DataBindingUtil.inflate(LayoutInflater.from(mContext),
                 R.layout.item_banner_list,
                 parent,
-                false
-        );
+                false);
 
         if (mListener != null) {
             binding.imgvItemBanner.setOnClickListener(mListener);
@@ -55,7 +54,7 @@ public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.ViewHolder
     @Override
     public void onViewRecycled(ViewHolder holder) {
         super.onViewRecycled(holder);
-        holder.mBinding.imgvItemBanner .setOnClickListener(null);
+        holder.mBinding.imgvItemBanner.setOnClickListener(null);
         holder.mBinding.unbind();
     }
 
@@ -68,7 +67,8 @@ public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.ViewHolder
 
         BannerEntity entity = mEntities.get(position % size);
         holder.mBinding.setBanner(entity);
-        // TODO: figure out why
+
+        // to indicate which image is clicked on click callback
         holder.mBinding.imgvItemBanner.setTag(entity);
 
     }
@@ -82,8 +82,7 @@ public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.ViewHolder
     }
 
 
-
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         ItemBannerListBinding mBinding;
 

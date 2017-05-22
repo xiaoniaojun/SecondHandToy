@@ -6,6 +6,7 @@ import java.util.List;
 
 import cn.xiaoniaojun.secondhandtoy.mvvm.M.entity.BannerEntity;
 import cn.xiaoniaojun.secondhandtoy.mvvm.M.entity.HomeListEntity;
+import cn.xiaoniaojun.secondhandtoy.mvvm.M.entity.HomePageCategoryEntity;
 import cn.xiaoniaojun.secondhandtoy.mvvm.core.binding.IBinding;
 
 /**
@@ -15,24 +16,19 @@ import cn.xiaoniaojun.secondhandtoy.mvvm.core.binding.IBinding;
 
 public interface IHomeFragmentViewModel extends IBinding {
 
-    /**
-     *  加载轮播图
-     */
+    /* Banner */
     void loadBanner();
-
-    /**
-     * 为BannerList添加监听器
-     * @param callback
-     */
     void addBannerListChangedCallback(ObservableList.OnListChangedCallback callback);
-
     List<BannerEntity> getBannerEntityList();
-
     void onBannerItemClick(BannerEntity entity);
 
+    /* Home List */
     List<HomeListEntity> getHomeList();
-
     void loadHomeData();
-
     void addHomeListChangedCallback(ObservableList.OnListChangedCallback callback);
+
+    /* Home Page Category */
+    void loadHomePageCategoryData();
+    List<HomePageCategoryEntity> getHomePageCategoryList();
+    void addHomePageCategoryListChangedCallback(ObservableList.OnListChangedCallback callback);
 }

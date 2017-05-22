@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import cn.xiaoniaojun.secondhandtoy.R;
 import cn.xiaoniaojun.secondhandtoy.databinding.LayoutHomePageFragmentBinding;
 import cn.xiaoniaojun.secondhandtoy.mvvm.V.layer.HomeViewLayer;
+import cn.xiaoniaojun.secondhandtoy.mvvm.V.ui.fragment.BaseMainFragment;
 import cn.xiaoniaojun.secondhandtoy.mvvm.VM.IHomeFragmentViewModel;
 import cn.xiaoniaojun.secondhandtoy.mvvm.VM.impl.HomeFragmentViewModel;
 import me.yokeyword.fragmentation.SupportFragment;
@@ -19,7 +20,7 @@ import me.yokeyword.fragmentation.SupportFragment;
  * Created by hackpoint on 2017/5/19.
  */
 
-public class HomePageFragment extends SupportFragment {
+public class HomePageFragment extends BaseMainFragment {
     private IHomeFragmentViewModel mViewModel;
 
     public static HomePageFragment newInstance() {

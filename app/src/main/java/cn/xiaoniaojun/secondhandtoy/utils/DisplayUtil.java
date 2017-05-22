@@ -2,6 +2,8 @@ package cn.xiaoniaojun.secondhandtoy.utils;
 
 import android.content.Context;
 import android.graphics.Point;
+import android.support.annotation.ColorRes;
+import android.support.v4.content.ContextCompat;
 import android.view.WindowManager;
 
 /**
@@ -79,4 +81,7 @@ public class DisplayUtil {
         windowManager.getDefaultDisplay().getSize(point);
         return point.y;
     }
+
+
+
 }

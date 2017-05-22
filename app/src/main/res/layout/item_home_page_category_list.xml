@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:fresco="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="entity"
+            type="cn.xiaoniaojun.secondhandtoy.mvvm.M.entity.HomePageCategoryEntity" />
+    </data>
+
+    <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="1px"
+                    android:layout_marginStart="1px"
+                    android:layout_marginTop="1px"
+                    android:layout_marginBottom="1px"
+                    android:background="@color/widgets_row_normal"
+                    android:paddingBottom="20dp">
+
+        <TextView
+            android:id="@+id/tv_category_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="20dp"
+            android:text="@{entity.title}"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/tv_category_intro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/imgv_category"
+            android:layout_alignStart="@+id/tv_category_title"
+            android:text="@{entity.intro}"
+            android:textColor="@color/colorGeryTextDescribe"
+            android:textSize="8sp"/>
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            fresco:actualImageUri="@{entity.imgUri}"
+            fresco:placeholderImage="@color/colorGrey300"
+            android:id="@+id/imgv_category"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/tv_category_title"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/category_image"/>
+
+    </RelativeLayout>
+
+</layout>
+

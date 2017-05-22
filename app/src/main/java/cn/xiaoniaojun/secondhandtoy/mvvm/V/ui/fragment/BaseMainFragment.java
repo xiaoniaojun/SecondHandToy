@@ -2,7 +2,7 @@ package cn.xiaoniaojun.secondhandtoy.mvvm.V.ui.fragment;
 
 import android.content.Context;
 
-import cn.xiaoniaojun.secondhandtoy.mvvm.V.ui.fragment.HomePage.HomeFragment;
+import cn.xiaoniaojun.secondhandtoy.mvvm.V.ui.fragment.HomePage.HomePageFragment;
 import cn.xiaoniaojun.secondhandtoy.mvvm.V.ui.interfaces.OnBackToFirstFragmentListener;
 import me.yokeyword.fragmentation.SupportFragment;
 
@@ -41,7 +41,7 @@ public class BaseMainFragment extends SupportFragment {
         if (getChildFragmentManager().getBackStackEntryCount() > 1) {
             popChild();
         } else {
-            if (this instanceof HomeFragment) { // 如果是主页Fragment，则退出Activity
+            if (this instanceof HomePageFragment) { // 如果是主页Fragment，则退出Activity
                 _mActivity.finish();
             } else {    // 如果不是，则触发回调，返回到主页
                 _mBackToFirstFragmentListener.onBackToFirstFragment();

@@ -17,7 +17,6 @@ import cn.xiaoniaojun.secondhandtoy.mvvm.V.ui.activity.HomeActivity;
 import cn.xiaoniaojun.secondhandtoy.mvvm.V.ui.fragment.HomePage.HomePageFragment;
 import cn.xiaoniaojun.secondhandtoy.mvvm.VM.IMainHomeViewModel;
 import cn.xiaoniaojun.secondhandtoy.mvvm.core.ViewLayer;
-import cn.xiaoniaojun.secondhandtoy.mvvm.V.ui.fragment.HomePage.HomeFragment;
 import cn.xiaoniaojun.secondhandtoy.mvvm.V.ui.fragment.UserInfoPage.UserInfoFragment;
 import me.yokeyword.fragmentation.SupportFragment;
 
@@ -74,7 +73,7 @@ public class MainHomeLayer extends ViewLayer<IMainHomeViewModel, HomeActivity> {
 
         // Setup Fragments
         if (mSavedInstanceState == null) {
-            mFragments[FRAGMENT_HOME] = HomeFragment.newInstance();
+            mFragments[FRAGMENT_HOME] = HomePageFragment.newInstance();
             mFragments[FRAGMENT_USER_INFO] = UserInfoFragment.newInstance();
             mFragments[FRAGMENT_OFFER_TOYS] = HomePageFragment.newInstance();
             mContainer.loadMultipleRootFragment(
@@ -86,10 +85,11 @@ public class MainHomeLayer extends ViewLayer<IMainHomeViewModel, HomeActivity> {
             );
 
         } else {
-            mFragments[FRAGMENT_HOME] = mContainer.findFragment(HomeFragment.class);
+            mFragments[FRAGMENT_HOME] = mContainer.findFragment(HomePageFragment.class);
             mFragments[FRAGMENT_OFFER_TOYS] = mContainer.findFragment(HomePageFragment.class);
             mFragments[FRAGMENT_USER_INFO] = mContainer.findFragment(UserInfoFragment.class);
         }
+
         //Setup BottomNavigationBar
         mBottomNavigationBar = mBinding.bottomNavigationBar;
         mBottomNavigationBar.addTab(R.drawable.selector_home, "主页", 0xffdfb052);
@@ -110,7 +110,15 @@ public class MainHomeLayer extends ViewLayer<IMainHomeViewModel, HomeActivity> {
                 mBottomNavigationBar.requestLayout();
             }
         });
+
+        // Setup Category List
+
     }
+
+
+
+
+
 
     @Override
     protected void onDetach() {
