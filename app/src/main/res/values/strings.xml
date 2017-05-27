@@ -19,4 +19,32 @@
     <string name="constr_read_more">查看全文</string>
     <string name="constr_category">分类</string>
     <string name="back">back</string>
+
+
+    <string name="title_activity_home">Test</string>
+    <string name="btn_go">选好了</string>
+    <string name="txt_label_size">尺码</string>
+    <string name="txt_label_colour">颜色</string>
+    <string name="label_color">颜色</string>
+    <string name="label_size">尺码</string>
+    <string name="label_prefered_date">送货日期</string>
+    <string name="label_prefered_time">送货时间</string>
+    <string name="label_date">送货日期</string>
+    <string name="label_time">送货时间</string>
+    <string name="action_book">订购</string>
+
+    <string name="txt_label_conf_color">颜色: %1s</string>
+    <string name="txt_label_conf_size">尺码: %1d</string>
+    <string name="txt_label_conf_time">时间: %1s</string>
+    <string name="txt_label_conf_date">日期: %1s</string>
+
+    <string name="prefered_date_today">今天\n02</string>
+    <string name="prefered_date_tomorrow">明天\n03</string>
+    <string name="prefered_date_tuesday">星期三\n04</string>
+    <string name="prefered_time_12">PM\n1–2</string>
+    <string name="prefered_time_23">PM\n2–3</string>
+    <string name="prefered_time_34">PM\n3–4</string>
+    <string name="message_order_placed">订单已经生成</string>
+    <string name="txt_conf_message">谢谢惠顾！请支付货款以供尽快发货。</string>
+
 </resources>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#58d3e1</color>
-    <color name="colorPrimaryDark">#e487c4</color>
+    <color name="colorPrimaryDark">#e4b3d3</color>
     <color name="colorAccent">#fba4dd</color>
     <color name="colorAccentDark">#0b1039</color>
     <color name="colorDialogNormal">#0079FF</color>
@@ -12,5 +12,17 @@
     <color name="widgets_row_normal">#ffffff</color>
     <color name="normal_background">#efeff4</color>
     <color name="colorGeryTextDescribe">#999999</color>
-    <color name="colorGrey300">#e0e0e0</color>
+    <color name="grey_300">#e0e0e0</color>
+    <color name="grey_800">#565656</color>
+
+    <color name="blue_grey_400">#90A4AE</color>
+    <color name="blue_grey_700">#455a64</color>
+    <color name="blue_grey_900">#37474F</color>
+
+    <color name="product_yellow">#FDBC56</color>
+    <color name="product_blue">#2DA6F2</color>
+    <color name="product_green">#7ECB59</color>
+    <color name="product_purple">#746AE7</color>
+    <color name="product_red">#e74843</color>
+    <color name="bottom_bar_text_color">#000000</color>
 </resources>

@@ -41,7 +41,7 @@
 
         <com.facebook.drawee.view.SimpleDraweeView
             fresco:actualImageUri="@{entity.imgUri}"
-            fresco:placeholderImage="@color/colorGrey300"
+            fresco:placeholderImage="@color/grey_300"
             android:id="@+id/imgv_category"
             android:layout_width="34dp"
             android:layout_height="34dp"

@@ -15,6 +15,7 @@ import cn.xiaoniaojun.secondhandtoy.databinding.LayoutHomeActivityBinding;
 import cn.xiaoniaojun.secondhandtoy.databinding.LayoutToolBarSharedBinding;
 import cn.xiaoniaojun.secondhandtoy.mvvm.V.ui.activity.HomeActivity;
 import cn.xiaoniaojun.secondhandtoy.mvvm.V.ui.fragment.HomePage.HomePageFragment;
+import cn.xiaoniaojun.secondhandtoy.mvvm.V.ui.fragment.ToysOnOfferPage.ToysProductFragment;
 import cn.xiaoniaojun.secondhandtoy.mvvm.VM.IMainHomeViewModel;
 import cn.xiaoniaojun.secondhandtoy.mvvm.core.ViewLayer;
 import cn.xiaoniaojun.secondhandtoy.mvvm.V.ui.fragment.UserInfoPage.UserInfoFragment;
@@ -75,7 +76,7 @@ public class MainHomeLayer extends ViewLayer<IMainHomeViewModel, HomeActivity> {
         if (mSavedInstanceState == null) {
             mFragments[FRAGMENT_HOME] = HomePageFragment.newInstance();
             mFragments[FRAGMENT_USER_INFO] = UserInfoFragment.newInstance();
-            mFragments[FRAGMENT_OFFER_TOYS] = HomePageFragment.newInstance();
+            mFragments[FRAGMENT_OFFER_TOYS] = ToysProductFragment.newInstance();
             mContainer.loadMultipleRootFragment(
                     R.id.fl_fragment_holder,
                     FRAGMENT_HOME,
@@ -86,30 +87,20 @@ public class MainHomeLayer extends ViewLayer<IMainHomeViewModel, HomeActivity> {
 
         } else {
             mFragments[FRAGMENT_HOME] = mContainer.findFragment(HomePageFragment.class);
-            mFragments[FRAGMENT_OFFER_TOYS] = mContainer.findFragment(HomePageFragment.class);
+            mFragments[FRAGMENT_OFFER_TOYS] = mContainer.findFragment(ToysProductFragment.class);
             mFragments[FRAGMENT_USER_INFO] = mContainer.findFragment(UserInfoFragment.class);
         }
 
         //Setup BottomNavigationBar
         mBottomNavigationBar = mBinding.bottomNavigationBar;
-        mBottomNavigationBar.addTab(R.drawable.selector_home, "主页", 0xffdfb052);
-        mBottomNavigationBar.addTab(R.drawable.selector_home, "玩具", 0xff12b052);
-        mBottomNavigationBar.addTab(R.drawable.selector_home, "发布", 0xff342052);
-        mBottomNavigationBar.addTab(R.drawable.selector_home, "我", 0xffdf2052);
+        mBottomNavigationBar.addTab(R.drawable.selector_home, "主页", 0xffffffff);
+        mBottomNavigationBar.addTab(R.drawable.selector_home, "玩具", 0xffffffff);
+        mBottomNavigationBar.addTab(R.drawable.selector_home, "发布", 0xffffffff);
+        mBottomNavigationBar.addTab(R.drawable.selector_home, "我", 0xffffffff);
+        mBottomNavigationBar.setTextColorResId(R.color.bottom_bar_text_color);
         mBottomNavigationBar.setTextDefaultVisible(true);
-        mBottomNavigationBar.setOnTabListener(new BottomNavigationBar.TabListener() {
-            @Override
-            public void onSelected(BottomBarTab tab, int position, int preposition) {
-                mContainer.showHideFragment(mFragments[position], mFragments[preposition]);
-
-            }
-        });
-        mBottomNavigationBar.post(new Runnable() {
-            @Override
-            public void run() {
-                mBottomNavigationBar.requestLayout();
-            }
-        });
+        mBottomNavigationBar.setOnTabListener((tab, position, preposition) -> mContainer.showHideFragment(mFragments[position], mFragments[preposition]));
+        mBottomNavigationBar.post(() -> mBottomNavigationBar.requestLayout());
 
         // Setup Category List
 

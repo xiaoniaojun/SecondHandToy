@@ -119,23 +119,20 @@ public class HomeFragmentViewModel extends ViewModel implements IHomeFragmentVie
     public void loadHomeData() {
         mHomeEntityList.clear();
 
-        Observable.create(new ObservableOnSubscribe<List<HomeListEntity>>() {
-            @Override
-            public void subscribe(@NonNull ObservableEmitter<List<HomeListEntity>> e) throws Exception {
-                List<HomeListEntity> list = new ArrayList<>();
-                String message = "最新文章 ";
-                for (int i = 0; i < PAGE_SIZE; i++) {
-                    HomeListEntity entity = new HomeListEntity();
-                    entity.setTitle(message + i);
-                    entity.setDate("2017-05-19");
-                    entity.setImgUrl(UriUtil.getUriForResourceId(R.drawable.article_mock).toString());
-                    list.add(entity);
-                }
-
-                Thread.sleep(2000);
-                e.onNext(list);
-                e.onComplete();
+        Observable.create((ObservableOnSubscribe<List<HomeListEntity>>) e -> {
+            List<HomeListEntity> list = new ArrayList<>();
+            String message = "最新文章 ";
+            for (int i = 0; i < PAGE_SIZE; i++) {
+                HomeListEntity entity = new HomeListEntity();
+                entity.setTitle(message + i);
+                entity.setDate("2017-05-19");
+                entity.setImgUrl(UriUtil.getUriForResourceId(R.drawable.article_mock).toString());
+                list.add(entity);
             }
+
+            Thread.sleep(2000);
+            e.onNext(list);
+            e.onComplete();
         }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DisposableObserver<List<HomeListEntity>>() {

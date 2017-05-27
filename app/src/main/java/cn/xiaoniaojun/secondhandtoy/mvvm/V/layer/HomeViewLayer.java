@@ -253,6 +253,7 @@ public class HomeViewLayer extends DataBindingViewLayer<LayoutHomePageFragmentBi
                 mViewModel.getHomeList());
         LinearLayoutManager layoutManager = new LinearLayoutManager(mContainer.getContext());
         mBinding.homelist.setLayoutManager(layoutManager);
+        mBinding.homelist.setHasFixedSize(true);
 
         /* on Recycler View Scroll */
         mBinding.homelist.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -320,12 +321,9 @@ public class HomeViewLayer extends DataBindingViewLayer<LayoutHomePageFragmentBi
 
         // create banner adapter
         mBannerAdapter = new BannerAdapter(mContainer.getContext(), mViewModel.getBannerEntityList());
-        mBannerAdapter.setListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                BannerEntity entity = (BannerEntity) v.getTag();
-                mViewModel.onBannerItemClick(entity);
-            }
+        mBannerAdapter.setListener(v -> {
+            BannerEntity entity = (BannerEntity) v.getTag();
+            mViewModel.onBannerItemClick(entity);
         });
 
         // setup banner view

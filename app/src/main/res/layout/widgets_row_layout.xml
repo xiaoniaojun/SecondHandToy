@@ -26,5 +26,6 @@
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_gravity="right"
+        android:background="@android:color/transparent"
         android:src="@drawable/ic_arrow_right"/>
 </LinearLayout>
